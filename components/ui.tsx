@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import { X, Star, ChevronDown, LoaderCircle, ShoppingBag } from 'lucide-react';
 import { cx, money } from '@/lib/utils';
 import { type Product } from '@/lib/types';
@@ -44,4 +45,7 @@ export function Accordion({ title, children, defaultOpen = false }: { title: str
 }
 export function Spinner({ label = 'Loading' }: { label?: string }) { return <span className="inline-flex items-center gap-2"><LoaderCircle size={17} className="spin" />{label}</span>; }
 export function EmptyState({ title, description, action }: { title: string; description: string; action?: ReactNode }) { return <div className="empty-state"><div className="round-icon"><ShoppingBag size={29} strokeWidth={1.3} /></div><h3>{title}</h3><p>{description}</p>{action}</div>; }
-export function Logo({ light = false }: { light?: boolean }) { return <span className={cx('logo', light && 'logo-light')}>top9ja<span>vintage</span><i>.</i></span>; }
+export function Logo({ light = false, full = false }: { light?: boolean; full?: boolean }) {
+  if (full) return <span className={cx('logo-full', light && 'logo-light')}><Image src={light ? '/brand/logo-full-light.png' : '/brand/logo-full.png'} alt="Top9jaVintage" width={310} height={320} /></span>;
+  return <span className={cx('logo', light && 'logo-light')}><Image className="logo-mark" src={light ? '/brand/logo-mark-light.png' : '/brand/logo-mark.png'} alt="" width={231} height={257} /><Image className="logo-wordmark" src={light ? '/brand/logo-wordmark-light.png' : '/brand/logo-wordmark.png'} alt="Top9jaVintage" width={287} height={45} /></span>;
+}

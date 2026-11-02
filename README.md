@@ -122,3 +122,17 @@ The demo uses local JSON files and local uploads so it runs without external cre
 ## Test coverage
 
 Playwright verifies search/filter/sort/infinite scroll, variant stock + cart + Nigerian demo checkout, wishlist/cart persistence, native video autoplay/mute, studio bulk upload + publish/edit/delete, mobile navigation, order status updates, SEO/PWA routes, and webhook rejection of unconfigured/unsigned requests.
+
+## Brand refresh (logo-led)
+
+The storefront now uses the uploaded company logo and its sage-green palette:
+
+- `public/brand/logo-mark.png`, `logo-wordmark.png`, `logo-full.png` (plus light variants) are used in the header, footer, hero seal, story sections, and studio.
+- `app/brand.css` applies the sage/forest theme, logo layout, scroll reveals, 3D tilt cards, marquee, page transitions, and reduced-motion fallbacks.
+- Home is extended with a brand marquee, story, lookbook, fit-film section, community voices, FAQ, and WhatsApp CTA.
+- Product pages add style notes, sample reviews, trust strip, and FAQ. Wishlist and checkout add brand/trust content.
+- New `/about` and `/journal` pages deepen the brand story and style guidance.
+
+### Motion system
+
+`components/motion.tsx` provides `Reveal`, `Tilt`, `Marquee`, `CountUp`, `Magnetic`, and `ScrollProgress`. All motion respects `prefers-reduced-motion`.

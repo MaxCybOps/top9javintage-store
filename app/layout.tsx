@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { StoreProvider } from '@/components/store-provider';
 import { SiteShell } from '@/components/site-shell';
 import './globals.css';
+import './brand.css';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
