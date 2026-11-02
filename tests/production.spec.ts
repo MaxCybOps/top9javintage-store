@@ -37,3 +37,9 @@ test('webhooks reject unconfigured or unsigned requests', async ({ request }) =>
   const flutterwave = await request.post('/api/webhooks/flutterwave', { data: { data: { status: 'successful' } }, headers: { 'verif-hash': 'bad' } });
   expect([401, 503]).toContain(flutterwave.status());
 });
+
+test('brand pages and logo assets are available', async ({ request }) => {
+  for (const path of ['/about', '/journal', '/brand/logo-mark.png', '/brand/logo-wordmark.png', '/brand/logo-full.png']) {
+    expect((await request.get(path)).status()).toBe(200);
+  }
+});
